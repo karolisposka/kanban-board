@@ -16,7 +16,8 @@ const Edit = () => {
       background: 'rgba(0,0,0,0.3)',
     }}>
       <div style={{
-        width: '90%',
+        width:'90%',
+        maxWidth: '480px',
         height:'80%',
         background: 'yellow'
       }}></div>

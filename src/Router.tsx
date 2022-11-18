@@ -19,6 +19,7 @@ function Router() {
             <Routes>
               <Route path='/' element={<Layout/>}>
                 <Route path='' element={<Home/>}>
+                  <Route path='board/:name' element={<Home/>}/>
                   <Route path='edit' element={<Edit/>}/>
                   <Route path='test' element={<Home/>}/>
                 </Route>
