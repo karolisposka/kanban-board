@@ -13,11 +13,8 @@ const Home = () => {
         {data === 0 ? 
         <NoData/>
           :
-          <List>
-          <div> hello world</div>
-        </List>
-      }
-      <Outlet/>
+        <Outlet/>
+        }
     </MainContainer>
   );
 };

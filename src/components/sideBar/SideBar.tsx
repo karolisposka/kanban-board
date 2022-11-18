@@ -1,23 +1,48 @@
-import React from 'react';
-import * as S from './SideBar.styles';
-import ThemeToggler from '../themeToggler/ThemeToggler';
+import React, {useContext} from 'react';
+import {link} from '../../models';
+import { themeContext } from '../../context';
+import * as S from './Sidebar.styles';
+
+
 
 type props = {
     show: boolean,
+    links: link[],
+    handleClose: () => void,
+
 }
 
-const SideBar = ({show}: props) => {
+const Sidebar = ({show, links, handleClose}: props) => {
+    const [theme, setTheme] = useContext(themeContext);
+
+    const toggleTheme = () => {
+        if(theme === 'light'){
+            setTheme('dark')
+        }else{
+            setTheme('light')
+        }
+    }
+
     return (
         <S.SideBarContainer show={show.toString()}>
             <S.Boards>all boards (<S.Span>3</S.Span>)</S.Boards>
             <S.LinksList>
-                <S.StyledLink icon={true} to='board/edit'>platform launch</S.StyledLink>
-                <S.StyledLink icon={true} to='board/test'>road map</S.StyledLink>
-                <S.StyledLink icon={true} to='board/marketingplan'>marketing plan</S.StyledLink>
+                {links && links.map((link,index) => (
+                    <S.StyledLink key={index} icon={true} to={link.path}>{link.text}</S.StyledLink>
+                ))}
             </S.LinksList>
-            <ThemeToggler/>
+            <S.Toggler 
+                theme={theme} 
+                handleClick={()=> {
+                toggleTheme()
+                }}
+            />
+            <S.HideButton type='button' onClick={handleClose}>
+                <S.ViewIcon/>
+                hide sidebar
+            </S.HideButton>
         </S.SideBarContainer>
     )
 }
 
-export default SideBar
+export default Sidebar

@@ -1,12 +1,12 @@
 import React from 'react';
-import * as S from './ShowSideBar.styles';
+import * as S from './ShowSidebar.styles';
 
 type props = {
     handleClick: () => void,
     show: boolean,
 }
 
-const ShowSideBar = ({handleClick, show}: props) => {
+const ShowSidebar = ({handleClick, show}: props) => {
   return (
     <S.IconContainer onClick={handleClick} show={show.toString()}>
         <S.ShowIcon/>
@@ -14,4 +14,4 @@ const ShowSideBar = ({handleClick, show}: props) => {
   )
 }
 
-export default ShowSideBar
+export default ShowSidebar

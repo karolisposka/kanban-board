@@ -1,9 +1,7 @@
 import React from 'react';
-// import { themeContext, dataContext } from './context';
-// import { darkTheme, lightTheme } from './theme';
-// import { ThemeProvider } from 'styled-components';
 import Edit from './pages/Edit';
 import Layout from './pages/Layout';
+import List from './components/list/List';
 import {
   BrowserRouter,
   Routes,
@@ -18,8 +16,8 @@ function Router() {
       <BrowserRouter>
             <Routes>
               <Route path='/' element={<Layout/>}>
-                <Route path='' element={<Home/>}>
-                  <Route path='board/:name' element={<Home/>}/>
+              <Route path='' element={<Home/>}>
+                  <Route path=':name' element={<List><div>hello</div></List>}/>
                   <Route path='edit' element={<Edit/>}/>
                   <Route path='test' element={<Home/>}/>
                 </Route>

@@ -10,9 +10,7 @@ type props = {
 const Container = ({children, className, style} :props) => {
   return (
     <S.Container style={style} className={className}>
-        <S.Section>
           {children}
-        </S.Section>
       </S.Container>
   )
 }

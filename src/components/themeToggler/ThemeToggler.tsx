@@ -1,25 +1,18 @@
-import React, {useContext} from 'react';
-import { themeContext } from '../../context';
+import React from 'react';
 import * as S from './ThemeToggler.styles';
 import Switch from '../switch/Switch';
 
-const ThemeToggler = () => {
-    const [theme, setTheme] = useContext(themeContext);
+type props = {
+    handleClick: () => void,
+    theme: string,
+    className?: string
+}
 
-    const toggleTheme = () => {
-        if(theme === 'light'){
-            setTheme('dark')
-        }else{
-            setTheme('light')
-        }
-    }
-
+const ThemeToggler = ({handleClick, className, theme}: props) => {
     return (
-        <S.Container>
+        <S.Container className={className}>
             <S.Dark/>
-            <Switch checked={theme} handleClick={()=>{
-                toggleTheme();
-            }}/>
+            <Switch checked={theme} handleClick={handleClick}/>
             <S.Light/>
         </S.Container>
     )
