@@ -1,31 +1,58 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
+import {themeContext} from '../../context';
 import * as S from './Header.styles';
-import {ReactComponent as Icon} from '../../assets/logo-mobile.svg';
+import {useNavigate, useLocation} from 'react-router-dom';
 
-const test: number = 1;
+//change navigate location to '/edit' instead of '/test';
 
-const Header: React.FC = () => {
-    const [chevronClicked, setChevronClicked] = useState<boolean>(false);
+type props = {
+    chevronClicked: boolean,
+    setChevronClicked: React.Dispatch<React.SetStateAction<boolean>>,
+    columnsLength: number,
+}
+
+const Header = ({chevronClicked, setChevronClicked, columnsLength}: props) => {
+    const [theme] = useContext(themeContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    //chevronClicked used to rotate chevron. ChevronClicked passed to component Chevron
+
     const handleClick = () => {
         setChevronClicked(!chevronClicked); 
     }
 
+    //navigates to main page 
+
+    const handleLogoClick = () => {
+        if (location.pathname !== '/'){
+            navigate('/')
+        }else {
+            return
+        }
+    };
+
     return (
         <S.Header>
-            <S.Section>
+                <S.DesktopLogo>
+                    {theme === 'light' ? <S.DarkLogo/> : <S.LightLogo/>}
+                </S.DesktopLogo>
+                <S.Section>
                 <S.LogoWrapper>
-                    <Icon/>
+                    <S.Logo onClick ={ () =>{
+                        handleLogoClick()
+                    }}/>
                     <S.Title>Platform Launch</S.Title>
-                    <S.Chevron onClick={()=>{
+                    <S.Chevron state={chevronClicked.toString()} onClick={()=>{
                         handleClick();
                     }}/> 
                 </S.LogoWrapper>
                 <S.ButtonsWrapper>
-                    <S.AddBtn disabled={test === 1 ? true : false} handleClick={()=>{
-                        console.log('sveiki');
+                    <S.AddBtn disabled={columnsLength === 0 ? true : false} handleClick={()=>{
+                        navigate('/test');
                     }} text='+'/>
-                    <S.AddBtnWide disabled={test === 1 ? true : false} handleClick={()=>{
-                        console.log('sveiki');
+                    <S.AddBtnWide disabled={columnsLength === 0 ? true : false} handleClick={()=>{
+                        navigate('/test');
                     }} text='+ Add New Task'/>
                     <S.StyledEllipsis/>
                 </S.ButtonsWrapper>

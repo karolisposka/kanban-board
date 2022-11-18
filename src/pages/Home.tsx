@@ -1,27 +1,24 @@
 import React, { useContext } from "react";
-import { themeContext } from "../context";
-import Button from "../components/button/Button";
+import { Outlet } from "react-router-dom";
+import { dataContext } from "../context";
+import List from '../components/list/List';
+import MainContainer from '../components/mainContainer/MainContainer';
+import NoData from '../components/noData/NoData';
 
 const Home = () => {
-  const [theme, setTheme] = useContext(themeContext);
-
-  const changeTheme = () => {
-    if (theme === "light") {
-      return setTheme("dark");
-    } else {
-      return setTheme("light");
-    }
-  };
+ const [data] = useContext(dataContext);
 
   return (
-    <div>
-      <Button
-        text="theme toggler"
-        handleClick={() => {
-          changeTheme();
-        }}
-      />
-    </div>
+    <MainContainer>
+        {data === 0 ? 
+        <NoData/>
+          :
+          <List>
+          <div> hello world</div>
+        </List>
+      }
+      <Outlet/>
+    </MainContainer>
   );
 };
 
