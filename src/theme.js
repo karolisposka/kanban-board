@@ -4,7 +4,8 @@ export const lightTheme = {
         colors: {
             primary: '#000112',
             secondary: '#828FA3',
-            gray: '#979797'
+            gray: '#979797',
+            label: '#828FA3'
         }
     },
     background: {
@@ -31,7 +32,8 @@ export const darkTheme = {
         colors: {
             primary: '#FFFFFF',
             secondary: '#828FA3',
-            gray: '#979797'
+            gray: '#979797',
+            label: '#FFFFFF'
         },
     },
     background: {

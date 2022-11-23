@@ -6,11 +6,12 @@ type button = {
     className?:any,
     disabled:boolean,
     handleClick: () => void,
+    type?: 'button' | 'submit' | 'reset'
 }
 
-const Button: React.FC<button> = ({ handleClick, disabled, text, className}) => {
+const Button: React.FC<button> = ({ handleClick, disabled, text, className, type}) => {
   return (
-    <S.Button className={className} disabled={disabled} onClick={handleClick}
+    <S.Button type={type} className={className} disabled={disabled} onClick={handleClick}
     >{text}</S.Button>
   )
 }

@@ -1,14 +1,13 @@
 import React from 'react';
 import Container from '../components/absoluteContainer/Container';
+import BoardForm from '../components/newBoardForm/BoardForm';
 
-
-const Edit = () => {
+const New = () => {
   return (
     <Container>
-      <div>hello</div>
+      <BoardForm/>
     </Container>
-   
   )
 }
 
-export default Edit
+export default New

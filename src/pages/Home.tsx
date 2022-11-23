@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { dataContext } from "../context";
-import List from '../components/list/List';
 import MainContainer from '../components/mainContainer/MainContainer';
 import NoData from '../components/noData/NoData';
 
 const Home = () => {
- const [data] = useContext(dataContext);
+  const navigate = useNavigate();
 
   return (
     <MainContainer>
-        {data === 0 ? 
-        <NoData/>
-          :
+        <NoData 
+        click={()=>{
+          navigate('/new');
+        }}/>  
         <Outlet/>
-        }
     </MainContainer>
   );
 };

@@ -6,21 +6,15 @@ import {useNavigate, useLocation} from 'react-router-dom';
 //change navigate location to '/edit' instead of '/test';
 
 type props = {
-    chevronClicked: boolean,
-    setChevronClicked: React.Dispatch<React.SetStateAction<boolean>>,
+    show: boolean,
+    handleClick: () => void,
     columnsLength: number,
 }
 
-const Header = ({chevronClicked, setChevronClicked, columnsLength}: props) => {
+const Header = ({show, handleClick, columnsLength}: props) => {
     const [theme] = useContext(themeContext);
     const navigate = useNavigate();
     const location = useLocation();
-
-    //chevronClicked used to rotate chevron. ChevronClicked passed to component Chevron
-
-    const handleClick = () => {
-        setChevronClicked(!chevronClicked); 
-    }
 
     //navigates to main page 
 
@@ -43,7 +37,7 @@ const Header = ({chevronClicked, setChevronClicked, columnsLength}: props) => {
                         handleLogoClick()
                     }}/>
                     <S.Title>Platform Launch</S.Title>
-                    <S.Chevron state={chevronClicked.toString()} onClick={()=>{
+                    <S.Chevron state={show.toString()} onClick={()=>{
                         handleClick();
                     }}/> 
                 </S.LogoWrapper>

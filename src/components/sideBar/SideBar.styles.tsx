@@ -17,7 +17,7 @@ export const SideBarContainer = Styled.div<props>`
     max-width:255px;
     display:${props=>props.show === 'true' ? 'block' : 'none'};
     @media(max-width:576px){
-        display:none;
+        display:none
     }
 `;
 
