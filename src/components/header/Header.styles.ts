@@ -23,8 +23,14 @@ export const DesktopLogo = Styled.div`
     border-right:1px solid ${props=>props.theme.border.primary};
     @media(min-width:576px){
         display:block;
-        width:33%;
+        width:25%;
         max-width:255px;
+    }
+    @media(min-width:768px){
+        width:24%;
+    }
+    @media(min-width:876px){
+        width:33%;
     }
 `;
 
@@ -63,6 +69,9 @@ export const Title = Styled.span`
     font-weight:700;
     margin-left:16px;
     color: ${props=>props.theme.fonts.colors.primary};
+    @media(min-width:576px){
+        margin-left:0;
+    }
 `
 
 export const Chevron = Styled(ChevronDown)<chevronTypes>`

@@ -7,10 +7,11 @@ type props = {
 
 export const IconContainer = Styled.div<props>`
   position:absolute;
+  z-index:2;
   display:none;
   align-items:center;
   justify-content:center;
-  width:3rem;
+  width:2.5rem;
   padding:0.75rem 0;
   bottom:2rem;
   left:0;

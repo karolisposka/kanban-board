@@ -17,6 +17,7 @@ export const Container = Styled.div<props>`
     background:rgba(0,0,0,0.3);
     display:none;
     bottom:0;
+    z-index:2;
     font-family:${props=>props.theme.fonts.name};
     @media(max-width:576px){
         display:${props=>props.show ? 'flex' : 'none'};
@@ -35,7 +36,7 @@ export const Boards = Styled.h1`
     color:${props=>props.theme.fonts.colors.secondary};
     font-size:12px;
     letter-spacing:2.4px;
-    font-weight:700;
+    font-weight:500;
     text-transform:uppercase;
     padding: 12px 16px;
 `;

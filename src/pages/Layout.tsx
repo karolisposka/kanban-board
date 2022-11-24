@@ -4,12 +4,17 @@ import { ThemeProvider } from 'styled-components';
 import { dataContext, themeContext } from '../context';
 import { darkTheme, lightTheme } from '../theme';
 import { Outlet } from 'react-router-dom';
-import {link} from '../models';
+import {link, board} from '../models';
 import Header from '../components/header/Header';
 import Sidebar from '../components/sidebar/Sidebar';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
 import ShowSidebar from '../components/showSidebar/ShowSidebar';
+import importedData from '../data.json';
+
+type data = {
+    boards: board[]
+}
 
 const Layout = () => {
     const navigate = useNavigate();
@@ -19,16 +24,12 @@ const Layout = () => {
         {path: '/roadmap', text: 'roadmap'},
         {path: '/marketing', text: 'marketing plan'}
     ]);
-    const [data, setData] = useState<number>(0);
+    const [data, setData] = useState<data>();
     const [show, setShow] = useState<boolean>(false);
 
-    const toggleTheme = () => {
-        if(theme === 'light'){
-            setTheme('dark')
-        }else{
-            setTheme('light')
-        }
-    }
+    useEffect(()=>{
+        setData(importedData);
+    },[])
 
     useEffect(()=>{
         if(paths){
@@ -37,6 +38,14 @@ const Layout = () => {
             return
         }
     },[])
+
+    const toggleTheme = () => {
+        if(theme === 'light'){
+            setTheme('dark')
+        }else{
+            setTheme('light')
+        }
+    }
 
     return (
         <>
@@ -49,7 +58,7 @@ const Layout = () => {
                             handleClick={()=>{
                                 setShow(!show)
                             }}
-                            columnsLength={data}
+                            columnsLength={data?.boards.length || 0}
                         />
                         <Container style={{display:'flex'}}>
                             <Sidebar 
