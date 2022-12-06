@@ -13,16 +13,18 @@ type props = {
 
 const Column = ({name, tasks, className}:props) => {
   const navigate = useNavigate();
+  console.log(tasks);
+  
   return (
     <S.Column className={className}>
         <S.TitleWrapper>
           <S.Dot/>
           <S.ColumnName>{name}
-            <S.Span>({tasks.length})</S.Span>
+            <S.Span>({tasks && tasks.length})</S.Span>
           </S.ColumnName>
         </S.TitleWrapper>
         <S.TasksList>
-            {tasks && tasks.map((task,index) => (
+            {tasks.length > 0 ? tasks.map((task,index) => (
                 <ColumnCard key={index} 
                 handleClick={()=>{
                   navigate(`task/${index}`)
@@ -31,7 +33,7 @@ const Column = ({name, tasks, className}:props) => {
                 subtasks={task.subtasks.length}
                 subtasksCompleted={task.subtasks.filter(task => task.isCompleted === true).length}
                 />
-            ))}
+            )) : <S.Nodata>no entries</S.Nodata>}
         </S.TasksList>
     </S.Column>
   )

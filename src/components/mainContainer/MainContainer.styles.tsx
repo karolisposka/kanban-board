@@ -1,15 +1,21 @@
 import Styled from 'styled-components';
 
-export const Container = Styled.div`
+
+type props = {
+    size?: string,
+}
+
+export const Container = Styled.div<props>`
     background:${props=>props.theme.background.primary};
+    font-family:${props=>props.theme.fonts.name};
     width:100%;
-    min-height:calc(100vh - 67.1px);
+    min-height:${props=>props.size === 'full' ? '100vh' : 'calc(100vh - 67.1px)'};
     display:flex;
     align-items:stretch;
     margin: 0 auto;
     @media(min-width:576px){
         justify-content:center;
-        min-height:(100vh - 71px);
+        min-height:${props=>props.size === 'full' ? '100vh' : 'calc(100vh - 71px)'};
     }
 
 `

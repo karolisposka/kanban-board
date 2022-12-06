@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import * as S from './BoardForm.styles';
 import Input from '../input/Input';
-import {useFormik} from 'formik';
+
 
 
 type column = {

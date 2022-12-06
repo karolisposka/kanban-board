@@ -1,7 +1,14 @@
 import Styled from 'styled-components';
 
-export const Button = Styled.button`
+type props= {
+    primary?: boolean,
+    disabled?: boolean
+}
+
+export const Button = Styled.button<props>`
     color: ${props=>props.theme.fonts.colors.primary};
+    width:100%;
+    background:${props=>props.primary  ? '#635FC7' : 'none'};
     opacity: ${props=>props.disabled ? 0.7 : 1};
     color: #ffffff;
     cursor:pointer;

@@ -12,6 +12,11 @@ export const StyledLink = Styled(NavLink)`
     font-weight:700;
     display:flex;
     align-items:center;
+    padding:1rem;
+    transition:0.3s ease-in-out;
+    &:hover{
+        color:${props=>props.theme.hover.purpleHover};
+    }
 
 `
 

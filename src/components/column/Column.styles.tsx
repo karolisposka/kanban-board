@@ -2,6 +2,7 @@ import Styled from 'styled-components';
 
 export const Column = Styled.div`
     font-family:${props=>props.theme.fonts.name};
+    color:${props=>props.theme.fonts.colors.primary};
     &&:nth-last-child(2){
         background:yellow;
     }
@@ -38,4 +39,12 @@ export const TasksList = Styled.ul`
     padding:0;
 
 `;
+
+export const Nodata = Styled.p`
+    color:${props=>props.theme.fonts.colors.primary};
+    background:${props=>props.theme.background.secondary};
+    padding:1rem;
+    border-radius:0.5rem;
+`
+
 

@@ -1,6 +1,6 @@
 export const lightTheme = {
     fonts: {
-        name:  "'Plus Jakarta Sans', sans-serif",
+        name:  "'Plus Jakarta Sans', Arial",
         colors: {
             primary: '#000112',
             secondary: '#828FA3',
@@ -13,6 +13,9 @@ export const lightTheme = {
         red: "#EA5555",
         light: "#E4EBFA",
         primary: '#F4F7FD',
+        checkbox: '#F4F7FD',
+        popUp: '#FFFFFF',
+        taskBg: '#FFFFFF',
         secondary: '#FFFFFF',
         disabled: '#E4EBFA'
     },
@@ -41,7 +44,10 @@ export const darkTheme = {
         red: "#EA5555",
         light: '#FFFFFF',
         primary: '#000112',
+        popUp: '#20212C',
+        checkbox: '#20212C',
         secondary: '#20212C',
+        taskBg: '#2B2C37',
         disabled: '#E4EBFA'
     },
     border: {

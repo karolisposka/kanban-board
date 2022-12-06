@@ -3,6 +3,11 @@ export type link = {
     text: string,
 }
 
+export type board = {
+    name: string,
+    columns: column[]
+}
+
 export type column = {
     name: string,
     tasks: task[]
@@ -21,7 +26,4 @@ export type subtask = {
     isCompleted: boolean,
 }
 
-export type board = {
-    name: string,
-    columns: column[]
-}
+

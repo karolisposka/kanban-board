@@ -9,6 +9,7 @@ export const Container = Styled.div`
     display:flex;
     flex-direction:column;
     font-family:${props=>props.theme.fonts.name};
+    width:100%;
 `;
 
 
@@ -49,14 +50,24 @@ export const Input = Styled.input`
    ::placeholder{
         color:#3e3F4E;
    }
+   :-webkit-autofill,
+    input:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+    }
+    &&[data-autocompleted] {
+        background-color: transparent !important;
+    }
 `;
 
 export const Span = Styled.span`
     color:#EA5555;
+    text-align:right;
     font-size:12px;
     letter-spacing:0.25px;
-    font-weight:200;
+    font-weight:500;
     margin:0 1rem;
+    min-width:40%;
+    max-width:100%;
 `;
 
 export const Icon = Styled(Cross)`

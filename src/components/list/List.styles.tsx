@@ -6,24 +6,24 @@ export const Container = Styled.div`
     width:100%;
     height:100%;
     padding:1rem;
+    
 `;
 
 export const BoardColumn = Styled(Column)`
     color:white;
     padding:1rem 0;
+    height:100%;
 `;
 
 export const NewColumn = Styled.div`
     background:${props=>props.theme.background.secondary};
     display:flex;
     justify-content:center;
-    align-items:center;
     width:100%;
     padding:1rem;
-    min-height:calc(100vh - 3.8rem - 200px);
-    max-height:100%;
     margin:3.8rem 0;
     border-radius:0.5rem;
+    height:100%;
 `
 
 export const Button = Styled.button`

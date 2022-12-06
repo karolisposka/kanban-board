@@ -5,13 +5,14 @@ type button = {
     text: string,
     className?:any,
     disabled:boolean,
-    handleClick: () => void,
+    primary?: boolean,
+    handleClick?: () => void,
     type?: 'button' | 'submit' | 'reset'
 }
 
-const Button: React.FC<button> = ({ handleClick, disabled, text, className, type}) => {
+const Button: React.FC<button> = ({ handleClick, disabled, primary, text, className, type}) => {
   return (
-    <S.Button type={type} className={className} disabled={disabled} onClick={handleClick}
+    <S.Button primary={primary} type={type} className={className} disabled={disabled} onClick={handleClick}
     >{text}</S.Button>
   )
 }

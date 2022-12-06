@@ -15,13 +15,18 @@ type props = {
 
 const List = ({list}: props) => {
   const navigate = useNavigate();
+  
   return (
     <S.Container>
       {list ?
       <Swiper
-        scrollbar={{ draggable: true }}
         slidesPerView = {1.3}
         spaceBetween = {15}
+        style={{
+          display:'flex',
+          alignItems:'stretch'
+        }}
+        
         breakpoints = {{
           576: {
             slidesPerView: 2.5,
@@ -32,14 +37,19 @@ const List = ({list}: props) => {
         }}
       > 
         {list.map((item,index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide  key={index}>
             <S.BoardColumn  name={item.name} tasks={item.tasks}/> 
           </SwiperSlide>  
         ))}
-        <SwiperSlide>
+        <SwiperSlide
+          style={{
+            display:'flex',
+            alignItems:'stretch',
+          }}
+        >
           <S.NewColumn>
             <S.Button onClick={()=>{
-              navigate('new')
+              navigate(`new`)
             }}>+ New Column</S.Button>
           </S.NewColumn>
         </SwiperSlide>

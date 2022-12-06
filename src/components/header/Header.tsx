@@ -1,18 +1,18 @@
 import React, {useContext} from 'react';
 import {themeContext} from '../../context';
 import * as S from './Header.styles';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate, useLocation, useParams} from 'react-router-dom';
 
-//change navigate location to '/edit' instead of '/test';
 
 type props = {
     show: boolean,
     handleClick: () => void,
-    columnsLength: number,
+    board: string | undefined
 }
 
-const Header = ({show, handleClick, columnsLength}: props) => {
+const Header = ({show, handleClick, board}: props) => {
     const [theme] = useContext(themeContext);
+    const paths = useParams();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -36,17 +36,17 @@ const Header = ({show, handleClick, columnsLength}: props) => {
                     <S.Logo onClick ={ () =>{
                         handleLogoClick()
                     }}/>
-                    <S.Title>Platform Launch</S.Title>
+                    <S.Title>{board && board}</S.Title>
                     <S.Chevron state={show.toString()} onClick={()=>{
                         handleClick();
                     }}/> 
                 </S.LogoWrapper>
                 <S.ButtonsWrapper>
-                    <S.AddBtn disabled={columnsLength === 0 ? true : false} handleClick={()=>{
-                        navigate('/test');
+                    <S.AddBtn type='button' disabled={false} handleClick={()=>{
+                        navigate(`/${paths.page}/newTask`);
                     }} text='+'/>
-                    <S.AddBtnWide disabled={columnsLength === 0 ? true : false} handleClick={()=>{
-                        navigate('/test');
+                    <S.AddBtnWide  type='button' disabled={false} handleClick={()=>{
+                        navigate(`/${paths.page}/newTask`);
                     }} text='+ Add New Task'/>
                     <S.StyledEllipsis/>
                 </S.ButtonsWrapper>

@@ -13,7 +13,7 @@ export const IconContainer = Styled.div<props>`
   justify-content:center;
   width:2.5rem;
   padding:0.75rem 0;
-  bottom:2rem;
+  top:calc(100vh - 5rem);
   left:0;
   border-top-right-radius:1rem;
   border-bottom-right-radius:1rem;

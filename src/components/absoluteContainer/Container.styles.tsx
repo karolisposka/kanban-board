@@ -17,7 +17,7 @@ export const Container = Styled.div`
 export const Section = Styled.section`
     width:90%;
     max-width:480px;
-    background:${props=>props.theme.background.secondary};
+    background:${props=>props.theme.background.taskBg};
     border-radius:0.5rem;
 `
 

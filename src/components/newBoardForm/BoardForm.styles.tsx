@@ -3,7 +3,7 @@ import Button from '../button/Button';
 
 
 export const Form = Styled.form`
-    padding:1rem;
+    padding:2rem;
     font-family:${props=>props.theme.fonts.name};
 
 `
@@ -16,6 +16,8 @@ export const BoardColumns = Styled.div`
 export const Title = Styled.h3`
     color:${props=>props.theme.fonts.colors.label};
     font-weight:500;
+    padding-bottom:1rem;
+    margin:0;
 `
 
 export const Label = Styled.label`
