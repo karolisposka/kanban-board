@@ -1,6 +1,6 @@
 import React from 'react';
 import { link } from '../../models';
-import * as S from './SideBar.styles';
+import * as S from './Sidebar.styles';
 import { useParams } from 'react-router-dom';
 
 type props = {
