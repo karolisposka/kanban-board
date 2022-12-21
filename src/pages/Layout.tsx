@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Showbar from '../components/showbar/Showbar';
 import Header from '../components/header/Header';
-import Sidebar from '../components/sidebar/Sidebar';
+import Side from '../components/sidebar/Sidebar';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
 import { fetchBoards } from '../store/slices/board';
@@ -51,7 +51,7 @@ const Layout = () => {
             alignItems: 'stretch',
           }}
         >
-          <Sidebar
+          <Side
             theme={theme}
             show={show}
             links={categories}

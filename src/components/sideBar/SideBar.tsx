@@ -11,7 +11,7 @@ type props = {
   handleToggler: () => void;
 };
 
-const Sidebar = ({ show, links, theme, handleClose, handleToggler }: props) => {
+const Side = ({ show, links, theme, handleClose, handleToggler }: props) => {
   const { page } = useParams();
   return (
     <S.SideBarContainer show={show.toString()}>
@@ -41,4 +41,4 @@ const Sidebar = ({ show, links, theme, handleClose, handleToggler }: props) => {
   );
 };
 
-export default Sidebar;
+export default Side;
