@@ -8,7 +8,7 @@ import { Outlet } from 'react-router-dom';
 import Showbar from '../components/showbar/Showbar';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
-// import Sidebar from '../components/sidebar/Sidebar';
+import Sidebar from '../components/sidebar/Sidebar';
 import Container from '../components/container/Container';
 
 const Layout = () => {
@@ -51,7 +51,7 @@ const Layout = () => {
             alignItems: 'stretch',
           }}
         >
-          {/* <Sidebar
+          <Sidebar
             theme={theme}
             show={show}
             links={categories}
@@ -61,7 +61,7 @@ const Layout = () => {
             handleToggler={() => {
               dispatch(toggleTheme());
             }}
-          /> */}
+          />
           <Outlet />
         </Container>
         <Showbar
