@@ -8,8 +8,8 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
-import SideBar from '../components/sidebar/SideBar';
 import ShowSidebar from '../components/showSidebar/ShowSidebar';
+import SideBar from '../components/sidebar/Sidebar';
 
 const Layout = () => {
   const dispatch = useAppDispatch();
