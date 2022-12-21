@@ -4,7 +4,7 @@ import Styled from 'styled-components';
 import uuid from 'react-uuid';
 import Notification from '../components/notification/Notification';
 
-const initialState = [];
+const initialState: string[] = [];
 
 type props = {
   children: React.ReactNode;
@@ -28,7 +28,7 @@ const NotificationProvider = ({ children }: props) => {
   const userError = useAppSelector((state) => state.user.message);
   const boardError = useAppSelector((state) => state.board.message);
 
-  const addError = (message) => {
+  const addError = (message: string) => {
     if (message) {
       dispatch({
         type: 'add',

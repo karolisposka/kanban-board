@@ -65,7 +65,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    toggleTheme: (state, action: any) => {
+    toggleTheme: (state: any) => {
       return {
         ...state,
         theme: state.theme === 'light' ? 'dark' : 'light',

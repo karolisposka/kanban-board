@@ -37,9 +37,9 @@ const SingleTask = () => {
   useEffect(() => {
     if (query.columns) {
       const filteredData = query?.columns
-        .filter((item) => item.name === column)[0]
-        .tasks.filter((task) => task.name.toLowerCase() === id?.toLowerCase())[0];
-      const options: options[] = query.columns.map((column) => {
+        .filter((item: any) => item.name === column)[0]
+        .tasks.filter((task: any) => task.name.toLowerCase() === id?.toLowerCase())[0];
+      const options: options[] = query.columns.map((column: any) => {
         return {
           value: column.name,
           label: column.name,
