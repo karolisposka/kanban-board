@@ -9,7 +9,7 @@ import Showbar from '../components/showbar/Showbar';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
-import Sidebar from '../components/sidebar/SideBar';
+import Sidebar from '../components/sidebar/Sidebar';
 
 const Layout = () => {
   const dispatch = useAppDispatch();
