@@ -1,48 +1,24 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": "src",
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
+    "target": "es6",
     "lib": [
-      "es6",
       "dom",
-      "es2015.promise"
+      "dom.iterable",
+      "esnext"
     ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "outDir": "build/dist",
-    "rootDir": "src",
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
-    "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "exclude": [
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts",
-    "node_modules",
-    "obj",
-    "**/*.spec.ts"
-  ],
-  "include": [
-    "src",
-    "src/**/*.tsx",
-    "@types/**/*.d.tsx",
-  ]
+  "include": ["src", "src/custom.d.ts", "src/components"],
 }
