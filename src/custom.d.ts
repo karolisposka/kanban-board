@@ -16,6 +16,8 @@ declare module "uuid" {
   export default content;  
 }
 
+declare module "styles.tsx"
+
 
 suppressImplicitAnyIndexErrors: true
 
