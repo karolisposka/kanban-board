@@ -7,9 +7,9 @@ import { toggleTheme } from '../store/slices/users';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
-// import ShowSideBar from '../components/showSidebar/ShowSideBar';
+import ShowSideBar from '../components/showSidebar/ShowSideBar';
 import Container from '../components/container/Container';
-// import SideBar from '../components/sidebar/SideBar';
+import SideBar from '../components/sidebar/SideBar';
 
 const Layout = () => {
   const dispatch = useAppDispatch();
@@ -51,7 +51,7 @@ const Layout = () => {
             alignItems: 'stretch',
           }}
         >
-          {/* <Sidebar
+          <SideBar
             theme={theme}
             show={show}
             links={categories}
@@ -61,15 +61,15 @@ const Layout = () => {
             handleToggler={() => {
               dispatch(toggleTheme());
             }}
-          /> */}
+          />
           <Outlet />
         </Container>
-        {/* <ShowSidebar
+        <ShowSideBar
           show={show}
           handleClick={() => {
             setShow(true);
           }}
-        /> */}
+        />
         <MobileMenu
           links={categories}
           theme={theme}
