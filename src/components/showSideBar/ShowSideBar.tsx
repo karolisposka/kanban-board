@@ -2,16 +2,16 @@ import React from 'react';
 import * as S from './ShowSidebar.styles';
 
 type props = {
-    handleClick: () => void,
-    show: boolean,
-}
+  handleClick: () => void;
+  show: boolean;
+};
 
-const ShowSidebar = ({handleClick, show}: props) => {
+const ShowSidebar = ({ handleClick, show }: props) => {
   return (
     <S.IconContainer onClick={handleClick} show={show.toString()}>
-        <S.ShowIcon/>
+      <S.ShowIcon />
     </S.IconContainer>
-  )
-}
+  );
+};
 
-export default ShowSidebar
+export default ShowSidebar;
