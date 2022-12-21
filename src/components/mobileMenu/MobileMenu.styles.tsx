@@ -1,6 +1,7 @@
 import Styled from 'styled-components';
 import Link from '../link/Link';
 import ThemeToggler from '../themeToggler/ThemeToggler';
+import Button from '../button/Button';
 
 type props = {
   show: boolean;
@@ -72,4 +73,20 @@ export const Toggler = Styled(ThemeToggler)`
     position: static;
     margin-bottom:1rem;
 
+`;
+
+export const LogoutBtn = Styled(Button)`
+    background:${(props) => props.theme.background.light};
+    color:${(props) => props.theme.fonts.colors.purple};
+    font-weight:700;
+    width:calc(100% - 2rem);
+    padding:1rem;
+    border-radius:0.25rem;
+    margin: 0.5rem 1rem 1rem 1rem;
+    transition:0.3s ease-in;
+    &:hover{
+        background:${(props) => props.theme.hover.purpleHover};
+        color:${(props) => props.theme.fonts.colors.light};
+    }
+    
 `;

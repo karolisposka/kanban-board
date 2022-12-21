@@ -1,6 +1,8 @@
 import React from 'react';
 import * as S from './MobileMenu.styles';
 import { useParams } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks';
+import { logout } from '../../store/slices/users';
 import { link } from '../../models';
 
 type props = {
@@ -11,6 +13,7 @@ type props = {
 };
 
 const MobileMenu = ({ show, links, handleToggle, theme }: props) => {
+  const dispatch = useAppDispatch();
   const { page } = useParams();
   return (
     <S.Container show={show}>
@@ -33,6 +36,14 @@ const MobileMenu = ({ show, links, handleToggle, theme }: props) => {
           </S.StyledLink>
         </S.List>
         <S.Toggler handleClick={handleToggle} theme={theme} />
+        <S.LogoutBtn
+          text="Logout"
+          type="button"
+          disabled={false}
+          handleClick={() => {
+            dispatch(logout());
+          }}
+        />
       </S.Section>
     </S.Container>
   );

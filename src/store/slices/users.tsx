@@ -71,6 +71,12 @@ export const userSlice = createSlice({
         theme: state.theme === 'light' ? 'dark' : 'light',
       };
     },
+    logout: (state: any) => {
+      return {
+        ...state,
+        token: null,
+      };
+    },
   },
   extraReducers: (builder: any) => {
     builder
@@ -104,6 +110,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { toggleTheme } = userSlice.actions;
+export const { toggleTheme, logout } = userSlice.actions;
 
 export default userSlice.reducer;
