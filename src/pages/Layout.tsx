@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import Showbar from '../components/showbar/Showbar';
+import Header from '../components/header/Header';
+import Sidebar from '../components/sidebar/Sidebar';
+import MobileMenu from '../components/mobileMenu/MobileMenu';
+import Container from '../components/container/Container';
 import { fetchBoards } from '../store/slices/board';
 import { fetchCategories } from '../store/slices/board';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { toggleTheme } from '../store/slices/users';
 import { Outlet } from 'react-router-dom';
-import Showbar from '../components/showbar/Showbar';
-import Header from '../components/header/Header';
-import Sidebar from '../components/sidebar/Sidebar';
-import MobileMenu from '../components/mobileMenu/MobileMenu';
-import Container from '../components/container/Container';
 
 const Layout = () => {
   const { categories, board } = useAppSelector((state) => state.board);
@@ -17,7 +17,6 @@ const Layout = () => {
   const [show, setShow] = useState<boolean>(false);
   const { page } = useParams();
   const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
