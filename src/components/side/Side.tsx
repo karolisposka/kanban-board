@@ -1,7 +1,9 @@
 import React from 'react';
 import * as S from './Side.styles';
 import { link } from '../../models';
+import { logout } from '../../store/slices/users';
 import { useParams } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks';
 
 type props = {
   show: boolean;
@@ -12,6 +14,8 @@ type props = {
 };
 
 const Side = ({ show, links, theme, handleClose, handleToggler }: props) => {
+  const dispatch = useAppDispatch();
+
   const { page } = useParams();
   return (
     <S.SideBarContainer show={show.toString()}>
@@ -37,6 +41,14 @@ const Side = ({ show, links, theme, handleClose, handleToggler }: props) => {
         <S.ViewIcon />
         hide sidebar
       </S.HideButton>
+      <S.LogoutBtn
+        text="Logout"
+        type="button"
+        disabled={false}
+        handleClick={() => {
+          dispatch(logout());
+        }}
+      />
     </S.SideBarContainer>
   );
 };

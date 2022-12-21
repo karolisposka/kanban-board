@@ -69,12 +69,14 @@ export const userSlice = createSlice({
       return {
         ...state,
         theme: state.theme === 'light' ? 'dark' : 'light',
+        message: { msg: 'theme changed' },
       };
     },
     logout: (state: any) => {
       return {
         ...state,
         token: null,
+        message: null,
       };
     },
   },
