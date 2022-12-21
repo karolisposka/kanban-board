@@ -52,6 +52,10 @@ export const NotificationItem = Styled.div<notification>`
 export const ItemMessage = Styled.p`
   margin:0;
   padding:30px 0 10px 0;
+  font-size:13px;
+  font-weight:600;
+  text-transform: capitalize;
+  letter-spacing: 0.025rem;
 
 `;
 
