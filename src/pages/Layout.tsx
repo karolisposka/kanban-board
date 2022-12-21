@@ -5,9 +5,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { toggleTheme } from '../store/slices/users';
 import { Outlet } from 'react-router-dom';
+import Showbar from '../components/showbar/Showbar';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
-import Showbar from '../components/showSidebar/Showbar';
 import Container from '../components/container/Container';
 import SideBar from '../components/sidebar/SideBar';
 
