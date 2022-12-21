@@ -1,6 +1,7 @@
 {
   "name": "Kanban board",
   "version": "0.1.0",
+  "main": "index.tsx",
   "private": true,
   "dependencies": {
     "@babel/eslint-parser": "^7.19.1",
