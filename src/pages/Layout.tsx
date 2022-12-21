@@ -9,7 +9,7 @@ import Showbar from '../components/showbar/Showbar';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
-import SideBar from '../components/sidebar/SideBar';
+import Sidebar from '../components/sidebar/SideBar';
 
 const Layout = () => {
   const dispatch = useAppDispatch();
@@ -51,7 +51,7 @@ const Layout = () => {
             alignItems: 'stretch',
           }}
         >
-          <SideBar
+          <Sidebar
             theme={theme}
             show={show}
             links={categories}
