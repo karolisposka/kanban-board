@@ -1,7 +1,10 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "outDir": "./out",
     "rootDir": "./src",
-    "preserveConstEnums": true
+    "strict": true
   },
 }
