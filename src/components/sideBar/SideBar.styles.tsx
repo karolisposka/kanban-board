@@ -1,4 +1,4 @@
-import Styled, { keyframes } from 'styled-components';
+import Styled from 'styled-components';
 import Link from '../link/Link';
 import { ReactComponent as Icon } from '../../assets/icon-hide-sidebar.svg';
 import ThemeToggler from '../themeToggler/ThemeToggler';
