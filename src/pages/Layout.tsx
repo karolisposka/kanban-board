@@ -7,8 +7,8 @@ import { toggleTheme } from '../store/slices/users';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
-import Container from '../components/container/Container';
 import ShowSidebar from '../components/showSidebar/ShowSidebar';
+import Container from '../components/container/Container';
 import Sidebar from '../components/sidebar/Sidebar';
 
 const Layout = () => {
