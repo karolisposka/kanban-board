@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './ShowSidebar.styles';
+import * as S from './ShowSideBar.styles';
 
 type props = {
   handleClick: () => void;

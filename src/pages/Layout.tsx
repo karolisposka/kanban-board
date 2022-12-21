@@ -7,9 +7,9 @@ import { toggleTheme } from '../store/slices/users';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
-import ShowSidebar from '../components/showSidebar/ShowSidebar';
+import ShowSidebar from '../components/showSidebar/ShowSideBar';
 import Container from '../components/container/Container';
-import Sidebar from '../components/sidebar/Sidebar';
+import Sidebar from '../components/sidebar/SideBar';
 
 const Layout = () => {
   const dispatch = useAppDispatch();
