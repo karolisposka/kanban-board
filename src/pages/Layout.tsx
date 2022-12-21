@@ -12,13 +12,14 @@ import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
 
 const Layout = () => {
-  const dispatch = useAppDispatch();
+  const { categories, board } = useAppSelector((state) => state.board);
   const { theme } = useAppSelector((state) => state.user);
   const [show, setShow] = useState<boolean>(false);
   const { page } = useParams();
   const navigate = useNavigate();
-  const board = useAppSelector((state) => state.board.board);
-  const categories = useAppSelector((state) => state.board.categories);
+
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
