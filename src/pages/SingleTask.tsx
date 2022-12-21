@@ -45,7 +45,6 @@ const SingleTask = () => {
           label: column.name,
         };
       });
-      console.log(filteredData);
       setOptions(options);
       setData(filteredData);
     } else {
