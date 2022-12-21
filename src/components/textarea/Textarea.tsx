@@ -7,10 +7,11 @@ type props = {
   placeholder: string;
   value: string;
   handleChange: (e: React.FormEvent) => void;
-  error: string | undefined;
+  handleBlur: (e: React.FormEvent) => void;
+  error: any;
 };
 
-const Textarea = ({ label, name, placeholder, value, handleChange, error }: props) => {
+const Textarea = ({ label, name, placeholder, value, handleChange, handleBlur, error }: props) => {
   return (
     <S.Container>
       <S.Label>{label}</S.Label>
@@ -20,6 +21,7 @@ const Textarea = ({ label, name, placeholder, value, handleChange, error }: prop
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
+        onBlur={handleBlur}
       />
       {error && <S.Span>{error}</S.Span>}
     </S.Container>

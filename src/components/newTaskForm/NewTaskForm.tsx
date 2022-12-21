@@ -61,14 +61,15 @@ const NewTaskForm = ({ handleSubmit, options }: props) => {
       }}
     >
       {(formik) => {
-        const { errors, values } = formik;
+        const { errors, values, touched } = formik;
+        console.log(errors);
         return (
           <Form handleSubmit={formik.handleSubmit}>
             <S.Title>Add New Task</S.Title>
             <Input
               handleBlur={formik.handleBlur}
               handleChange={formik.handleChange}
-              error={errors.name}
+              error={touched.name && errors.name && errors.name}
               value={values.name}
               type="text"
               name="name"
@@ -76,12 +77,13 @@ const NewTaskForm = ({ handleSubmit, options }: props) => {
               placeholder="e.g Take coffee break"
             />
             <Textarea
-              label="description"
               name="description"
-              error={errors.description && errors.description}
+              label="description"
+              error={touched.description && errors.description}
               value={values.description}
               placeholder="e.g it's always good to take a break. This 15 minute break will recharge the batteries a little"
               handleChange={formik.handleChange}
+              handleBlur={formik.handleBlur}
             />
 
             <S.Label>Subtasks</S.Label>
