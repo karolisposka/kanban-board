@@ -1,48 +1,45 @@
-import React, {useContext} from 'react';
-import { themeContext } from '../../context';
-import AsyncSelect from 'react-select/async';
+import React from 'react';
+import Select from 'react-select';
+import { useAppSelector } from '../../hooks';
 import { SelectOptions } from './SelectOptions';
 import * as S from './SelectField.styles';
 
-const SelectField = () => {
-  const [theme] = useContext(themeContext);
+type props = {
+  className?: string;
+  label: string;
+  name: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
+  handleChange: (option: any) => void;
+  disabled?: boolean;
+  value: string;
+};
+
+const SelectField = ({ label, name, options, className, disabled, value, handleChange }: props) => {
+  //themecontext is used for select custom styling;
+  const { theme } = useAppSelector((state) => state.user);
+
   const customStyles = SelectOptions(theme);
 
-  type option = {
-    value: string,
-    label: string,
-  }
-  const options: option[] = [
-    {
-      value: 'todo',
-      label:'todo'
-    },
-    {
-      value: 'doing',
-      label:'doing'
-    },
-    {
-      value: 'done',
-      label:'done'
-    },
-  ];
-
-  const handleChange = ( option: any )=>{
-    console.log(option)
-  };
-
-  const loadOptions = (searchValue: any, callback: any)=>{
-    const filteredOptions = options.filter(option => option.label.toLowerCase().includes(searchValue.toLowerCase()));
-    callback(filteredOptions);
-  }
-
   return (
-    <S.SelectContainer>
-      <S.Label>Current status</S.Label>
-      <AsyncSelect loadOptions={loadOptions} defaultOptions onChange={handleChange} styles={customStyles}/>
+    <S.SelectContainer className={className}>
+      <S.Label>{label}</S.Label>
+      {options && (
+        <Select
+          name={name}
+          options={options}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+          value={options.filter((option) => option.label === value)}
+          isDisabled={disabled}
+          styles={customStyles}
+        />
+      )}
     </S.SelectContainer>
-    
-  )
-}
+  );
+};
 
-export default SelectField
+export default SelectField;

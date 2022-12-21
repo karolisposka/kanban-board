@@ -5,6 +5,7 @@ import {ReactComponent as Icon} from '../../assets/logo-mobile.svg';
 import {ReactComponent as IconDark} from '../../assets/logo-dark.svg';
 import {ReactComponent as IconLight} from '../../assets/logo-light.svg';
 import Button from '../button/Button';
+import PopUp from '../popUp/PopUp';
 
 
 type chevronTypes = {
@@ -16,6 +17,7 @@ export const Header = Styled.header`
     background:${props=>props.theme.background.secondary};
     display:flex;
     align-items:center;
+    position:relative;
 `
 
 export const DesktopLogo = Styled.div`
@@ -68,6 +70,7 @@ export const Title = Styled.span`
     font-size:18px;
     font-weight:700;
     margin-left:16px;
+    text-transform: capitalize;
     color: ${props=>props.theme.fonts.colors.primary};
     @media(min-width:576px){
         margin-left:0;
@@ -78,7 +81,8 @@ export const Chevron = Styled(ChevronDown)<chevronTypes>`
     margin:0 8px;
     cursor: pointer;
     transition:0.3s ease-in-out;
-    transform: ${props=>props.state === 'true' ? `rotate(180deg)` : `null`};
+    transform: scale(1.5);
+    transform: ${props=>props.state === 'true' ? `rotate(180deg) scale(1.5)` : `null`};
     @media(min-width:576px){
         display:none;
     }
@@ -119,4 +123,12 @@ export const StyledEllipsis = Styled(Ellipsis)`
     margin-left:8px;
     transform: scale(0.8);
     cursor: pointer;
+`
+
+export const StyledPopUp = Styled(PopUp)`
+    right: 1rem;
+    top: 5rem;
+    z-index:10;
+    background:${props=>props.theme.background.primary};
+
 `

@@ -1,9 +1,13 @@
 import React from 'react';
 import * as S from './Loader.styles';
 
-const Loader = () => {
+type props = {
+  className?: string,
+};
+
+const Loader = ({className}: props) => {
   return (
-    <S.Ring>
+    <S.Ring className={className}>
         <S.RingComponent/>
         <S.RingComponent/>
         <S.RingComponent/>

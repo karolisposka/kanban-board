@@ -5,7 +5,9 @@ export const lightTheme = {
             primary: '#000112',
             secondary: '#828FA3',
             gray: '#979797',
-            label: '#828FA3'
+            label: '#828FA3',
+            danger: "#EA5555",
+            purple: "#635FC7",
         }
     },
     background: {
@@ -36,7 +38,9 @@ export const darkTheme = {
             primary: '#FFFFFF',
             secondary: '#828FA3',
             gray: '#979797',
-            label: '#FFFFFF'
+            label: '#FFFFFF',
+            danger: "#EA5555",
+            purple: "#635FC7",
         },
     },
     background: {

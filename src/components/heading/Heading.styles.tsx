@@ -11,6 +11,7 @@ export const Heading = Styled.p<props>`
     font-size: ${props => props.size === 'large' ? '24px' : '18px'};
     line-height: ${props => props.size === 'large' ? '30px' : '23px'};
     display:${props=>props.flex ==='flex' ? 'flex' : 'block'};
+    justify-content:${props=>props.flex ==='flex' ? 'space-between' :'none'};
     align-items:${props=>props.flex ==='flex' ? 'center' :'none'};
     font-family:${props=>props.theme.fonts.name};
     font-weight:700;

@@ -1,30 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import uuid from 'react-uuid';
+import { addTask } from '../store/slices/board';
+import { fetchBoards } from '../store/slices/board';
+import { useParams } from 'react-router-dom';
 import Container from '../components/absoluteContainer/Container';
-import Form from '../components/form/Form';
-import Input from '../components/input/Input';
-import Textarea from '../components/textarea/Textarea';
+import NewTaskForm from '../components/newTaskForm/NewTaskForm';
 
-const newTask = () => {
+const NewTask = () => {
+  const board = useAppSelector((state) => state.board.board);
+  const dispatch = useAppDispatch();
+  type options = {
+    label: string;
+    value: string;
+  }[];
+
+  const [selectOptions, setSelectOptions] = useState<options>();
+
+  const mapToSelectOptions = (arr: any) => {
+    if (arr) {
+      setSelectOptions(
+        arr?.columns?.map((column) => {
+          return {
+            label: column.name,
+            value: column.name,
+          };
+        }),
+      );
+    }
+    return;
+  };
+
+  useEffect(() => {
+    if (board) {
+      mapToSelectOptions(board);
+    } else {
+      dispatch(fetchBoards());
+    }
+  }, [board]);
+
+  const { page } = useParams();
+
   return (
     <Container>
-        <Form>
-            <Input name='title' label='title' placeholder='e.g Take coffee break' value='xx' type='text' icon={false} handleChange={()=>{
-                console.log('blabal')
-            }}/>
-            <Textarea label='description' value='' placeholder="e.g it's always good to take a break. This 15 minute break will recharge the batteries a little" handleChange={(event)=>{
-                console.log(event);
-            }}/>
-            <div>
-                <Input name='subtask' placeholder='e.g Take coffee break' value='xx' type='text' icon={true} handleChange={()=>{
-                    console.log('blabal')
-                }}/>
-                <Input name='subtask' placeholder='e.g Take coffee break' value='xx' type='text' icon={true} handleChange={()=>{
-                    console.log('blabal')
-                }}/>
-            </div>
-        </Form>  
+      <NewTaskForm
+        options={selectOptions}
+        handleSubmit={(object) => {
+          dispatch(addTask({ page, object }));
+        }}
+      />
     </Container>
-  )
-}
+  );
+};
 
-export default newTask
+export default NewTask;

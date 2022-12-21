@@ -1,22 +1,24 @@
 import Styled from 'styled-components';
-import {ReactComponent as Cross} from '../../assets/icon-cross.svg';
+import { ReactComponent as Cross } from '../../assets/icon-cross.svg';
 
 type inputProps = {
-    error?:string
-} 
+  error?: string;
+};
 
 export const Container = Styled.div`
     display:flex;
     flex-direction:column;
-    font-family:${props=>props.theme.fonts.name};
+    font-family:${(props) => props.theme.fonts.name};
     width:100%;
+    margin: 0.5rem 0 ;
 `;
 
-
 export const Label = Styled.label`
-    color:${props=>props.theme.fonts.colors.label};
-    text-transform:capitalize;
     font-size:12px;
+    font-weight:600;
+    color:${(props) => props.theme.fonts.colors.primary};
+    margin:6px 0;
+    text-transform: capitalize;
 `;
 
 export const InputWrapper = Styled.div`
@@ -32,8 +34,7 @@ export const InputContainer = Styled.div<inputProps>`
     align-items:center;
     justify-content:space-between;
     border-radius:0.125rem;
-    border:${props =>props.error ? '1px solid #EA5555' : '1px solid #3e3F4E'};
-    margin: 0.5rem 0;
+    border:${(props) => (props.error ? '1px solid #EA5555' : '1px solid #3e3F4E')};
 `;
 
 export const Input = Styled.input`
@@ -45,7 +46,7 @@ export const Input = Styled.input`
     font-weight:200;
     font-size:12px;
     width:100%;
-    color:${props=>props.theme.fonts.colors.label};
+    color:${(props) => props.theme.fonts.colors.label};
     text-transform: capitalize;
    ::placeholder{
         color:#3e3F4E;
@@ -74,6 +75,8 @@ export const Icon = Styled(Cross)`
     display:inline-block;
     margin-left: 1rem;
     cursor:pointer;
+    &:hover{ 
+        color:#EA5555;
+    }
 
 `;
-

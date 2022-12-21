@@ -1,22 +1,26 @@
 import Styled from 'styled-components';
 
-
 export const Container = Styled.div`
     display:flex;
     flex-direction:column;
-    font-family:${props=>props.theme.fonts.name};
+    font-family:${(props) => props.theme.fonts.name};
     margin:0.5rem 0;
 `;
 
 export const Label = Styled.label`
-    color:${props=>props.theme.fonts.colors.label};
-    text-transform:capitalize;
     font-size:12px;
+    font-weight:600;
+    color:${(props) => props.theme.fonts.colors.primary};
+    margin:6px 0;
+    text-transform: capitalize;
 `;
 
-export const Textarea = Styled.textarea`
+type props = {
+  error: string | undefined;
+};
+export const Textarea = Styled.textarea<props>`
     width:100%;
-    color:${props=>props.theme.fonts.colors.primary};
+    color:${(props) => props.theme.fonts.colors.primary};
     box-sizing:border-box;
     resize:none;
     height:80px;
@@ -25,10 +29,22 @@ export const Textarea = Styled.textarea`
     font-size:12px;
     outline:none;
     padding:0.25rem;
-    border:1px solid #3e3F4E;
+    border:${(props) => (props.error ? '1px solid #EA5555' : '1px solid #3e3F4E')};
     margin-top:0.25rem;
     ::placeholder{
         color:#3e3F4E;
         padding:0.25rem;
    }
+`;
+
+export const Span = Styled.span`
+    color:#EA5555;
+    text-align:right;
+    font-size:12px;
+    letter-spacing:0.25px;
+    font-weight:500;
+    margin:0.25rem 1rem;
+    min-width:40%;
+    max-width:100%;
+    font-family:${(props) => props.theme.fonts.name};
 `;

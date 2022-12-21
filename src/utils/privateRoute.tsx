@@ -1,15 +1,18 @@
 import React from 'react';
-import {Navigate, Outlet} from 'react-router-dom';
+import { Outlet, Navigate, useLocation } from 'react-router-dom';
 
 type props = {
-    user: string | null,
-    path: string
-}
-const privateRoute = ({user, path}: props) => {
-    if(!user){
-        return <Navigate to={path} replace/>
-    }
-    return <Outlet/>;
-}
+  user?: string | null;
+  path: string;
+};
 
-export default privateRoute
+const PrivateRoute = ({ user, path }: props) => {
+  const location = useLocation();
+  if (!user) {
+    return <Navigate to={path} replace state={{ from: location }} />;
+  } else {
+    return <Outlet />;
+  }
+};
+
+export default PrivateRoute;

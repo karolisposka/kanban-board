@@ -3,17 +3,17 @@ import { CSSProperties } from 'styled-components';
 import * as S from './Form.styles';
 
 type props = {
-    children: React.ReactNode,
-    style?: CSSProperties,
-    handleSubmit: () => void,
-}
+  children: React.ReactNode;
+  style?: CSSProperties;
+  handleSubmit?: () => void;
+};
 
-const Form = ({children, style, handleSubmit}: props) => {
+const Form = ({ children, style, handleSubmit }: props) => {
   return (
     <S.Form style={style} onSubmit={handleSubmit}>
-        {children}
+      {children}
     </S.Form>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;

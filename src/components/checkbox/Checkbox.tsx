@@ -1,22 +1,35 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './Checkbox.styles';
 
-type props ={
-    label: string,
+type props = {
+  id: string;
+  label: string;
+  disabled?: boolean;
+  checked: boolean;
+  handleChange: (e: any) => void;
+};
 
-}
+const Checkbox = ({ label, id, disabled, handleChange, checked }: props) => {
+  const [completed, setCompleted] = useState<boolean>(checked);
 
-const Checkbox = ({label}: props) => {
-    const [checked, setChecked] = useState<boolean>(false);
+  useEffect(() => {
+    setCompleted(checked);
+  }, [checked]);
+
   return (
     <S.Checkbox>
-        <S.Input checked={checked} name='test' type='checkbox' onChange={()=>{
-            setChecked(!checked)
-        }}/>
-        {!checked ?  <S.Label>{label}</S.Label> : <S.Strikethrough>{label}</S.Strikethrough>}
-        
+      <S.Input
+        checked={completed}
+        disabled={disabled}
+        name="test"
+        type="checkbox"
+        onChange={() => {
+          handleChange(completed);
+        }}
+      />
+      {!completed ? <S.Label>{label}</S.Label> : <S.Strikethrough>{label}</S.Strikethrough>}
     </S.Checkbox>
-  )
-}
+  );
+};
 
-export default Checkbox
+export default Checkbox;

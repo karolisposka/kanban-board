@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useReducer, useEffect } from 'react';
+import { useAppDispatch } from '../hooks';
 import Container from '../components/absoluteContainer/Container';
 import BoardForm from '../components/newBoardForm/BoardForm';
-import Form from '../components/form/Form';
+import { addBoard } from '../store/slices/board';
 
 const New = () => {
+  const dispatchAction = useAppDispatch();
+
+  const handleFormSubmit = (values: any) => {
+    dispatchAction(addBoard(values));
+  };
+
   return (
     <Container>
-      <BoardForm/>
+      <BoardForm
+        handleSubmit={(values: any) => {
+          handleFormSubmit(values);
+        }}
+      />
     </Container>
-  )
-}
+  );
+};
 
-export default New
+export default New;

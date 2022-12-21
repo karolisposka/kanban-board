@@ -8,7 +8,8 @@ export const SelectContainer = Styled.div`
 export const Label = Styled.p`
     font-size:12px;
     font-weight:600;
-    color:${props=>props.theme.fonts.colors.primary};
+    color:${(props) => props.theme.fonts.colors.primary};
     margin:6px 0;
+    text-transform: capitalize;
 
 `;

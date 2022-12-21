@@ -1,103 +1,88 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchBoards } from '../store/slices/board';
+import { fetchCategories } from '../store/slices/board';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { dataContext, themeContext } from '../context';
+import { useAppSelector, useAppDispatch } from '../hooks';
+import { toggleTheme } from '../store/slices/users';
 import { darkTheme, lightTheme } from '../theme';
-import { useFetch } from '../hooks';
 import { Outlet } from 'react-router-dom';
-import {link, board} from '../models';
 import Header from '../components/header/Header';
 import Sidebar from '../components/sidebar/Sidebar';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
 import ShowSidebar from '../components/showSidebar/ShowSidebar';
 
-type data = {
-    boards: board[] | any;
-}
-
 const Layout = () => {
-    const path = useParams();
-    const board = Number(path.page);
-    const navigate = useNavigate();
-    const [theme, setTheme] = useState<string>('dark');
-    const [show, setShow] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const { theme } = useAppSelector((state) => state.user);
+  const [show, setShow] = useState<boolean>(false);
+  const { page } = useParams();
+  const navigate = useNavigate();
+  const board = useAppSelector((state) => state.board.board);
+  const categories = useAppSelector((state) => state.board.categories);
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
 
-    const {query, error} = useFetch();
-    
-    const [paths, setPaths] = useState<link[]>([
-        {path: '/0', text: 'platform'},
-        {path: '/1', text: 'roadmap'},
-        {path: '/2', text: 'marketing plan'},
-        {path: `/1/new`, text: '+ create new board'}
-    ]);
+  useEffect(() => {
+    dispatch(fetchBoards(page));
+  }, [page]);
 
-    useEffect(()=>{
-        if(paths){
-            navigate(paths[0].path);
-        }else{
-            return
-        }
-    },[]);
-    
-
-
-    const toggleTheme = () => {
-        if(theme === 'light'){
-            setTheme('dark')
-        }else{
-            setTheme('light')
-        }
+  useEffect(() => {
+    if (categories.length > 0) {
+      navigate(categories[0].path);
+    } else {
+      navigate('/0');
     }
+  }, [categories]);
 
-    return (
-        <>
-        <dataContext.Provider value={[query]}>
-            <themeContext.Provider value={[theme, setTheme]}>
-                <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-                    <Container style={{position: 'relative'}}>
-                        <Header 
-                            board={'Platform Launch'}
-                            show={show}
-                            handleClick={()=>{
-                                setShow(!show)
-                            }}
-                        />
-                        <Container style={{display:'flex', minHeight:'calc(100vh -72px)'}}>
-                            <Sidebar 
-                                theme={theme}
-                                show={show}
-                                links={paths}
-                                handleClose={()=>{
-                                setShow(false);
-                                }}
-                                handleToggler={()=>{
-                                    toggleTheme()
-                                }}
-                            />
-                            <Outlet/>
-                        </Container>
-                        <ShowSidebar 
-                            show={show} 
-                            handleClick={()=>{
-                            setShow(true);
-                            }}
-                        />
-                         <MobileMenu 
-                            links={paths}
-                            theme={theme}
-                            show={show}
-                            handleToggle={()=>{
-                                toggleTheme();
-                            }}
-                           
-                        />
-                    </Container>
-                </ThemeProvider>
-            </themeContext.Provider>
-        </dataContext.Provider>
-        </>
-    )
-}
+  return (
+    <>
+      <Container style={{ position: 'relative' }}>
+        <Header
+          board={board?.name}
+          show={show}
+          handleClick={() => {
+            setShow(!show);
+          }}
+        />
+        <Container
+          style={{
+            display: 'flex',
+            alignItems: 'stretch',
+          }}
+        >
+          <Sidebar
+            theme={theme}
+            show={show}
+            links={categories}
+            handleClose={() => {
+              setShow(false);
+            }}
+            handleToggler={() => {
+              dispatch(toggleTheme());
+            }}
+          />
+          <Outlet />
+        </Container>
+        <ShowSidebar
+          show={show}
+          handleClick={() => {
+            setShow(true);
+          }}
+        />
+        <MobileMenu
+          links={categories}
+          theme={theme}
+          show={show}
+          handleToggle={() => {
+            dispatch(toggleTheme());
+          }}
+        />
+      </Container>
+    </>
+  );
+};
 
-export default Layout
+export default Layout;

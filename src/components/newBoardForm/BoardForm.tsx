@@ -1,89 +1,115 @@
-import React, {useState} from 'react';
+import React from 'react';
 import * as S from './BoardForm.styles';
 import Input from '../input/Input';
-
-
+import { FieldArray, Formik } from 'formik';
+import uuid from 'react-uuid';
+import * as Yup from 'yup';
 
 type column = {
-    id: number,
-    value: string,
-}
+  name: string;
+  columns: {
+    id: string;
+    name: string;
+    tasks: [];
+  }[];
+};
 
-const BoardForm = () => {
-    const [columns, setColumns] = useState<column[]>([
-        {
-            value: 'todo',
-            id: 1
-        },
-        {
-            value: 'doing',
-            id: 2
-        }
-    ]);
+type props = {
+  handleSubmit: (values: any) => void;
+};
 
+const initialValues: column = {
+  name: '',
+  columns: [
+    {
+      id: uuid(),
+      name: 'Todo',
+      tasks: [],
+    },
+  ],
+};
 
+const validationSchema = Yup.object({
+  name: Yup.string().required("Can't be empty"),
+  columns: Yup.array(
+    Yup.object({
+      id: Yup.string(),
+      name: Yup.string().required("Can't be empty"),
+    }),
+  ).min(1),
+});
 
-    const addNewColumn : () => void = () => {
-        const randomId = Math.floor(Math.random()*10000000);
-        setColumns(columns.length < 4  ?  [...columns, { id: randomId, value: ''}] : columns);
-    };
-
-    const deleteColumn = (id: number) => {
-        setColumns(columns.filter(column => column.id !== id));
-    }
-
-    const updateValue = (id: number, input: string) => {
-        setColumns(columns.map(column => {
-            if(column.id == id){
-                return {...column, value: input}
-            } else {
-                return column
-            }
-        }))
-    }
-
+const BoardForm = ({ handleSubmit }: props) => {
   return (
-    <S.Form>
-        <S.Title> Add new board </S.Title>
-        <Input 
-            name='boardname'
-            type='text'
-            label='board name'
-            placeholder='e.g Web Design'
-        />
-        <S.BoardColumns>
-            <S.Label>Board Columns</S.Label>
-            {columns && columns.map((column) => (
-                <Input 
-                    name={column.value}
-                    key={column.id}
-                    type='text'
-                    placeholder={column.value}
-                    icon={true}
-                    value={column.value}
-                    handleDelete={()=>{deleteColumn(column.id)}}
-                    handleChange={(event) => updateValue(column.id, event.currentTarget.value)}
-                 />
-            ))}
-            <S.NewColumnBtn
-                type='button'
-                disabled={false}
-                handleClick={()=>{
-                    addNewColumn();
-                }}
-                text='+ add new column'
-            />
-        </S.BoardColumns>
-        
-        <S.SubmitBtn  
-            disabled={false}
-            handleClick={()=>{
-                console.log('cool')
-            }}
-            text='create new board'
-        />
-    </S.Form>
-  )
-}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={(values: any) => {
+        handleSubmit(values);
+      }}
+    >
+      {(formik) => {
+        const { errors, values } = formik;
 
-export default BoardForm
+        return (
+          <S.FormComponent>
+            <S.Title>Add New Board</S.Title>
+            <Input
+              handleBlur={formik.handleBlur}
+              handleChange={formik.handleChange}
+              error={errors.name}
+              value={values.name}
+              type="text"
+              name="name"
+              label="Board Name"
+              placeholder="e.g Take coffee break"
+            />
+            <S.BoardColumns>
+              <S.Label>Board Columns</S.Label>
+              <FieldArray name="columns">
+                {(props) => {
+                  const { push, remove, form } = props;
+                  const { values, errors, touched, setFieldValue } = form;
+                  return (
+                    <>
+                      {values.columns.map((column: any, index: number) => (
+                        <Input
+                          key={index}
+                          id={column.id}
+                          handleBlur={formik.handleBlur}
+                          name={`columns[${index}]`}
+                          type="text"
+                          touched={touched}
+                          error={errors ? errors : null}
+                          icon={true}
+                          handleDelete={() => {
+                            remove(column.id);
+                          }}
+                          value={column.name}
+                          handleChange={(e) => {
+                            setFieldValue(`columns[${index}].name`, e.currentTarget.value);
+                          }}
+                        />
+                      ))}
+                      <S.NewColumnBtn
+                        type="button"
+                        disabled={false}
+                        text="+ add new column"
+                        handleClick={() => {
+                          push({ name: '', id: uuid(), tasks: [] });
+                        }}
+                      />
+                    </>
+                  );
+                }}
+              </FieldArray>
+            </S.BoardColumns>
+            <S.SubmitBtn type="submit" disabled={false} text="Create New Board" />
+          </S.FormComponent>
+        );
+      }}
+    </Formik>
+  );
+};
+
+export default BoardForm;

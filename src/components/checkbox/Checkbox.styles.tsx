@@ -48,5 +48,7 @@ export const Input = Styled.input`
   background-color: #2B2C37;
   padding: 1px;
 };
-  background:yellow;
+  &&:disabled{
+    background: none;
+  }
 `;

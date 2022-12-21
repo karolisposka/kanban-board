@@ -1,6 +1,5 @@
 import Styled from 'styled-components';
 
-
 export const Container = Styled.div`
     position: absolute;
     z-index:3;
@@ -9,6 +8,7 @@ export const Container = Styled.div`
     height:100%;
     width:100%;
     display:flex;
+    overflow:auto;
     justify-content:center;
     align-items:center;
     background:rgba(0,0,0,0.3);
@@ -17,8 +17,6 @@ export const Container = Styled.div`
 export const Section = Styled.section`
     width:90%;
     max-width:480px;
-    background:${props=>props.theme.background.taskBg};
+    background:${(props) => props.theme.background.taskBg};
     border-radius:0.5rem;
-`
-
-      
+`;
