@@ -89,7 +89,6 @@ const NewTaskForm = ({ handleSubmit, options }: props) => {
               {(props) => {
                 const { push, remove, form } = props;
                 const { values, errors, touched, setFieldValue } = form;
-                console.log(errors);
                 return (
                   <>
                     {values.subtasks.map((column: any, index: number) => (

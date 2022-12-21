@@ -1,5 +1,4 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import thunkMiddleware from 'redux-thunk';
 import boardsReducer from './slices/board';
 import UserReducer from './slices/users';
 import { persistStore, persistReducer } from 'redux-persist';

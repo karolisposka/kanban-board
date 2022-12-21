@@ -1,8 +1,6 @@
-import { createSlice, PayloadAction, createAsyncThunk, current } from '@reduxjs/toolkit';
-import { Column } from '../../components/column/Column.styles';
-import Subtasks from '../../components/subtasks/Subtasks';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { link } from '../../models';
-import { board } from '../../models';
+import { board, column } from '../../models';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
@@ -33,13 +31,13 @@ export const boardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBoards.pending, (state, action) => {
+      .addCase(fetchBoards.pending, (state) => {
         state.status = 'pending';
       })
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.board = action.payload;
       })
-      .addCase(addBoard.pending, (state, action) => {
+      .addCase(addBoard.pending, (state) => {
         state.status = 'pending';
         state.message = null;
       })
@@ -51,7 +49,7 @@ export const boardSlice = createSlice({
           message: action.payload.msg,
         };
       })
-      .addCase(deleteBoard.pending, (state, action) => {
+      .addCase(deleteBoard.pending, (state) => {
         return {
           ...state,
           message: null,
@@ -66,7 +64,7 @@ export const boardSlice = createSlice({
           categories: state.categories.filter((item) => item.path !== action.payload.id),
         };
       })
-      .addCase(editBoard.pending, (state, action) => {
+      .addCase(editBoard.pending, (state) => {
         return {
           ...state,
           status: 'pending',
@@ -74,7 +72,6 @@ export const boardSlice = createSlice({
         };
       })
       .addCase(editBoard.fulfilled, (state, action) => {
-        console.log(action.payload);
         return {
           ...state,
           status: 'idle',
@@ -86,7 +83,7 @@ export const boardSlice = createSlice({
           },
         };
       })
-      .addCase(fetchCategories.pending, (state, action) => {
+      .addCase(fetchCategories.pending, (state) => {
         state.status = 'pending';
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
@@ -99,7 +96,7 @@ export const boardSlice = createSlice({
         state.categories = cat;
         state.status = 'idle';
       })
-      .addCase(addTask.pending, (state, action) => {
+      .addCase(addTask.pending, (state) => {
         return {
           ...state,
           status: 'pending',
@@ -125,7 +122,7 @@ export const boardSlice = createSlice({
           },
         };
       })
-      .addCase(deleteTask.pending, (state, action) => {
+      .addCase(deleteTask.pending, (state) => {
         return {
           ...state,
           status: 'pending',
@@ -159,7 +156,7 @@ export const boardSlice = createSlice({
           };
         }
       })
-      .addCase(updateSubtaskStatus.pending, (state, action) => {
+      .addCase(updateSubtaskStatus.pending, (state) => {
         return {
           ...state,
           message: null,
@@ -209,7 +206,7 @@ export const boardSlice = createSlice({
           };
         }
       })
-      .addCase(changeTaskStatus.pending, (state, action) => {
+      .addCase(changeTaskStatus.pending, (state) => {
         return {
           ...state,
           status: 'pending',
@@ -280,7 +277,7 @@ export const fetchCategories = createAsyncThunk(
       const data = await response.json();
       return data;
     } catch (err) {
-      console.log(err);
+      console.log('Oops. Something might be wrong with the server');
     }
   },
 );
@@ -302,7 +299,7 @@ export const deleteBoard = createAsyncThunk(
       const data = await response.json();
       return data;
     } catch (err) {
-      console.log(err);
+      console.log('Oops. Something might be wrong with the server');
     }
   },
 );
@@ -325,8 +322,6 @@ export const editBoard = createAsyncThunk('boards/editBoard', async (object: any
   }
 });
 
-//completed
-
 export const updateSubtaskStatus = createAsyncThunk(
   'subtasks/updateStatus',
   async (object: any, { getState }) => {
@@ -343,12 +338,10 @@ export const updateSubtaskStatus = createAsyncThunk(
       const data = response.json();
       return data;
     } catch (err) {
-      console.log(err);
+      console.log('Oops. Something might be wrong with the server');
     }
   },
 );
-
-//completed//
 
 export const fetchBoards = createAsyncThunk(
   'boards/fetchBoards',
@@ -369,8 +362,6 @@ export const fetchBoards = createAsyncThunk(
   },
 );
 
-//completed//
-
 export const addBoard = createAsyncThunk('boards/addBoard', async (schema: any, { getState }) => {
   const state: any = getState();
   try {
@@ -388,8 +379,6 @@ export const addBoard = createAsyncThunk('boards/addBoard', async (schema: any, 
     console.log('Ooops. Something might be wrong with server');
   }
 });
-
-//completed
 
 export const addTask = createAsyncThunk('boards/addTask', async (schema: any, { getState }) => {
   const { page, object } = schema;

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
@@ -57,7 +57,7 @@ export const userLogin = createAsyncThunk('users/userLogin', async (loginSchema:
     const data = await response.json();
     return data;
   } catch (err) {
-    console.log(err);
+    console.log('Ooops something went wrong');
   }
 });
 
@@ -65,7 +65,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    toggleTheme: (state: any) => {
+    toggleTheme: (state) => {
       return {
         ...state,
         theme: state.theme === 'light' ? 'dark' : 'light',

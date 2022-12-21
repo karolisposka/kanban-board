@@ -28,7 +28,6 @@ const Header = ({ show, handleClick, board }: props) => {
   };
 
   useEffect(() => {
-    console.log(board);
     if (board) {
       setDisabled(false);
     } else {

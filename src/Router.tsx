@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAppSelector } from './hooks';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './utils/privateRoute';
-import { ThemeContext } from 'styled-components';
 import { darkTheme, lightTheme } from '../src/theme';
 import Edit from './pages/Edit';
 import New from './pages/New';
