@@ -8,7 +8,7 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
 import Container from '../components/container/Container';
-import Sidebar from '../components/sidebar/SideBar';
+import SideBar from '../components/sidebar/SideBar';
 import ShowSidebar from '../components/showSidebar/ShowSidebar';
 
 const Layout = () => {
@@ -51,7 +51,7 @@ const Layout = () => {
             alignItems: 'stretch',
           }}
         >
-          <Sidebar
+          <SideBar
             theme={theme}
             show={show}
             links={categories}
