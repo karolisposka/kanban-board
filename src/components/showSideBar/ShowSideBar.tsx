@@ -6,7 +6,7 @@ type props = {
   show: boolean;
 };
 
-const ShowSidebar = ({ handleClick, show }: props) => {
+const ShowSideBar = ({ handleClick, show }: props) => {
   return (
     <S.IconContainer onClick={handleClick} show={show.toString()}>
       <S.ShowIcon />
@@ -14,4 +14,4 @@ const ShowSidebar = ({ handleClick, show }: props) => {
   );
 };
 
-export default ShowSidebar;
+export default ShowSideBar;
