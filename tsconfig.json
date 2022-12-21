@@ -4,5 +4,4 @@
     "rootDir": "./src",
     "preserveConstEnums": true
   },
-  "include": ["src/**/*"],
 }
