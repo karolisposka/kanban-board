@@ -65,19 +65,19 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    toggleTheme: (state) => {
+    toggleTheme: (state: any) => {
       return {
         ...state,
         theme: state.theme === 'light' ? 'dark' : 'light',
       };
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: (builder: any) => {
     builder
-      .addCase(userLogin.pending, (state, action) => {
+      .addCase(userLogin.pending, (state: any) => {
         state.status = 'pending';
       })
-      .addCase(userLogin.fulfilled, (state, action) => {
+      .addCase(userLogin.fulfilled, (state: any, action: any) => {
         state.status = 'idle';
         if (action.payload.token) {
           state.token = action.payload.token;
@@ -86,18 +86,18 @@ export const userSlice = createSlice({
           state.message = action.payload;
         }
       })
-      .addCase(userLogin.rejected, (state, action) => {
+      .addCase(userLogin.rejected, (state: any, action: any) => {
         state.message = action.payload;
         state.status = 'idle';
       })
-      .addCase(userRegister.pending, (state, action) => {
+      .addCase(userRegister.pending, (state: any) => {
         state.status = 'pending';
       })
-      .addCase(userRegister.fulfilled, (state, action) => {
+      .addCase(userRegister.fulfilled, (state: any, action: any) => {
         state.status = 'idle';
         state.message = action.payload;
       })
-      .addCase(userRegister.rejected, (state, action) => {
+      .addCase(userRegister.rejected, (state: any, action: any) => {
         state.message = action.payload;
         state.status = 'idle';
       });
