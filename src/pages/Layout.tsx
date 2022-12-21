@@ -7,7 +7,7 @@ import { toggleTheme } from '../store/slices/users';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
 import MobileMenu from '../components/mobileMenu/MobileMenu';
-import ShowSidebar from '../components/showSidebar/ShowSideBar';
+// import ShowSidebar from '../components/showSidebar/ShowSideBar';
 import Container from '../components/container/Container';
 import Sidebar from '../components/sidebar/SideBar';
 
@@ -64,12 +64,12 @@ const Layout = () => {
           />
           <Outlet />
         </Container>
-        <ShowSidebar
+        {/* <ShowSidebar
           show={show}
           handleClick={() => {
             setShow(true);
           }}
-        />
+        /> */}
         <MobileMenu
           links={categories}
           theme={theme}
