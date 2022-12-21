@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './EditFormBoard.styles';
 import Input from '../input/Input';
-import { FieldArray, Formik, Field } from 'formik';
+import { FieldArray, Formik } from 'formik';
 import uuid from 'react-uuid';
 import * as Yup from 'yup';
 

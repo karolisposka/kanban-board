@@ -20,7 +20,7 @@ const NewTask = () => {
   const mapToSelectOptions = (arr: any) => {
     if (arr) {
       setSelectOptions(
-        arr?.columns?.map((column) => {
+        arr?.columns?.map((column: any) => {
           return {
             label: column.name,
             value: column.name,
@@ -44,7 +44,7 @@ const NewTask = () => {
   return (
     <Container>
       <NewTaskForm
-        options={selectOptions}
+        options={selectOptions!}
         handleSubmit={(object) => {
           dispatch(addTask({ page, object }));
         }}

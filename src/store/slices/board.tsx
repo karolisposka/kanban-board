@@ -371,7 +371,7 @@ export const fetchBoards = createAsyncThunk(
 
 //completed//
 
-export const addBoard = createAsyncThunk('boards/addBoard', async (schema, { getState }) => {
+export const addBoard = createAsyncThunk('boards/addBoard', async (schema: any, { getState }) => {
   const state: any = getState();
   try {
     const response = await fetch(`${baseURL}v1/boards/board/add`, {

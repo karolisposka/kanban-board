@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React from 'react';
 import { useAppDispatch } from '../hooks';
 import Container from '../components/absoluteContainer/Container';
 import BoardForm from '../components/newBoardForm/BoardForm';
