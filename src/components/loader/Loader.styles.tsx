@@ -1,5 +1,4 @@
-import Styled, {keyframes} from 'styled-components';
-
+import Styled, { keyframes } from 'styled-components';
 
 const spin = keyframes`
     0% {
@@ -8,15 +7,23 @@ const spin = keyframes`
     100% {
       transform: rotate(360deg);
     }
-`
+`;
+
+export const loaderContainer = Styled.div`
+    display:flex;
+    justify-content:Center;
+    align-items:center;
+    min-width:70vh;
+
+`;
 
 export const Ring = Styled.div`
     display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;
-`    
- 
+`;
+
 export const RingComponent = Styled.div`
     box-sizing: border-box;
     display: block;
@@ -24,10 +31,11 @@ export const RingComponent = Styled.div`
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 8px solid ${props=>props.theme.fonts.colors.primary};
+    border: 8px solid ${(props) => props.theme.fonts.colors.primary};
     border-radius: 50%;
     animation: ${spin} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${props=>props.theme.fonts.colors.primary} transparent transparent transparent;
+    border-color: ${(props) =>
+      props.theme.fonts.colors.primary} transparent transparent transparent;
     &:nth-child(1) {
         animation-delay: -0.45s;
     }
@@ -37,7 +45,4 @@ export const RingComponent = Styled.div`
     &:nth-child(3) {
         animation-delay: -0.15s;
     }
-`
-
-
-  
+`;

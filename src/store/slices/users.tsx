@@ -99,15 +99,24 @@ export const userSlice = createSlice({
         state.status = 'idle';
       })
       .addCase(userRegister.pending, (state: any) => {
-        state.status = 'pending';
+        return {
+          ...state,
+          status: 'pending',
+        };
       })
       .addCase(userRegister.fulfilled, (state: any, action: any) => {
-        state.status = 'idle';
-        state.message = action.payload;
+        return {
+          ...state,
+          status: 'idle',
+          message: action.payload,
+        };
       })
       .addCase(userRegister.rejected, (state: any, action: any) => {
-        state.message = action.payload;
-        state.status = 'idle';
+        return {
+          ...state,
+          message: action.payload,
+          status: 'idle',
+        };
       });
   },
 });

@@ -6,7 +6,7 @@ import Container from '../components/container/Container';
 import Loader from '../components/loader/Loader';
 
 const Board = () => {
-  const query = useAppSelector((state) => state.board.board);
+  const { board, status } = useAppSelector((state) => state.board);
 
   return (
     <Container
@@ -19,7 +19,7 @@ const Board = () => {
         overflow: 'hidden',
       }}
     >
-      {query ? <List list={query.columns} /> : <Loader />}
+      {board ? <List list={board.columns} /> : <Loader />}
       <Outlet />
     </Container>
   );

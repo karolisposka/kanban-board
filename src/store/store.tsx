@@ -9,13 +9,30 @@ const rootReducer = combineReducers({
   user: UserReducer,
 });
 
+const appReducer = (state: any, action: any) => {
+  if (action.type === 'user/logout') {
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        token: null,
+      },
+      board: {
+        ...state.board,
+        board: null,
+      },
+    };
+  }
+  return rootReducer(state, action);
+};
+
 const persistConfig = {
   key: 'root',
   storage,
   whitelist: ['user'],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, appReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,

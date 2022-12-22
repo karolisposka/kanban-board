@@ -2,17 +2,19 @@ import React from 'react';
 import * as S from './Loader.styles';
 
 type props = {
-  className?: string,
+  className?: string;
 };
 
-const Loader = ({className}: props) => {
+const Loader = ({ className }: props) => {
   return (
-    <S.Ring className={className}>
-        <S.RingComponent/>
-        <S.RingComponent/>
-        <S.RingComponent/>
-    </S.Ring>
-  )
-}
+    <S.loaderContainer>
+      <S.Ring className={className}>
+        <S.RingComponent />
+        <S.RingComponent />
+        <S.RingComponent />
+      </S.Ring>
+    </S.loaderContainer>
+  );
+};
 
-export default Loader
+export default Loader;
