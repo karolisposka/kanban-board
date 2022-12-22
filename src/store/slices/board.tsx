@@ -74,6 +74,7 @@ export const boardSlice = createSlice({
           status: 'idle',
           message: action.payload?.msg || action.payload?.err,
           categories: state.categories.filter((item) => item.path !== action.payload.id),
+          board: [],
         };
       })
       .addCase(editBoard.pending, (state) => {
