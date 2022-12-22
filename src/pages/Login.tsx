@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate, useLocation } from 'react-router-dom';
 import MainContainer from '../components/mainContainer/MainContainer';
@@ -10,7 +10,6 @@ import Link from '../components/link/Link';
 import { loginValidation } from '../utils/validationSchemas';
 import { userLogin } from '../store/slices/users';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import Loader from '../components/loader/Loader';
 
 type formValues = {
   username: string;
@@ -29,10 +28,16 @@ const formStyles: React.CSSProperties = {
 };
 
 const Login = () => {
+  const { token } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
-  const { status } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    if (token) {
+      navigate('/');
+    }
+  });
 
   const initialValues: formValues = {
     username: '',

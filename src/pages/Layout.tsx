@@ -31,7 +31,7 @@ const Layout = () => {
     if (categories.length > 0) {
       navigate(categories[0].path);
     } else {
-      navigate('/0');
+      navigate('/empty');
     }
   }, [categories]);
 

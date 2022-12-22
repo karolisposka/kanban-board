@@ -34,7 +34,6 @@ const HeadingStyle: React.CSSProperties = {
 
 const Register = () => {
   const status = useAppSelector((state) => state.user.status);
-  console.log(status);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const initialValues: formValues = {
@@ -94,7 +93,7 @@ const Register = () => {
           type="submit"
           primary={true}
           styles={{ width: '100%' }}
-          text="Login"
+          text="Register"
           disabled={false}
         />
         <Link to="/login" icon={false}>
