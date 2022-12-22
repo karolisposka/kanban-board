@@ -34,8 +34,20 @@ export const boardSlice = createSlice({
       .addCase(fetchBoards.pending, (state) => {
         state.status = 'pending';
       })
-      .addCase(fetchBoards.fulfilled, (state, action) => {
-        state.board = action.payload;
+      .addCase(fetchBoards.fulfilled, (state, action: any) => {
+        if (action.payload.msg) {
+          return {
+            ...state,
+            message: action.payload.msg,
+            status: 'idle',
+          };
+        } else {
+          return {
+            ...state,
+            board: action.payload,
+            status: 'idle',
+          };
+        }
       })
       .addCase(addBoard.pending, (state) => {
         state.status = 'pending';
@@ -110,7 +122,7 @@ export const boardSlice = createSlice({
           message: action.payload?.data.msg,
           board: {
             ...state.board,
-            columns: state.board.columns.map((column: any) => {
+            columns: state.board.columns.map((column: column) => {
               if (column.name.toLowerCase() === action.payload?.data.status.toLowerCase()) {
                 return {
                   ...column,
@@ -137,7 +149,7 @@ export const boardSlice = createSlice({
             message: msg,
             board: {
               ...state.board,
-              columns: state.board.columns.map((column: any) => {
+              columns: state.board.columns.map((column: column) => {
                 return {
                   ...column,
                   tasks:
@@ -171,7 +183,7 @@ export const boardSlice = createSlice({
             message: msg,
             board: {
               ...state.board,
-              columns: state.board.columns.map((column: any) => {
+              columns: state.board.columns.map((column: column) => {
                 return {
                   ...column,
                   tasks:
@@ -261,8 +273,6 @@ export const boardSlice = createSlice({
   },
 });
 
-//completed//
-
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
   async (_, { getState }) => {
@@ -347,17 +357,21 @@ export const fetchBoards = createAsyncThunk(
   'boards/fetchBoards',
   async (url: string | undefined, { getState }) => {
     const state: any = getState();
-    try {
-      const response = await fetch(`${baseURL}v1/boards/get/${url}`, {
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${state.user.token}`,
-        },
-      });
-      const data: board = await response.json();
-      return data;
-    } catch (err) {
-      console.log('Oops boards are not fetching');
+    if (url !== 'empty') {
+      try {
+        const response = await fetch(`${baseURL}v1/boards/get/${url}`, {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${state.user.token}`,
+          },
+        });
+        const data: board = await response.json();
+        return data;
+      } catch (err) {
+        console.log('Oops boards are not fetching');
+      }
+    } else {
+      return { msg: 'create new board' };
     }
   },
 );
