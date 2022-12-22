@@ -92,7 +92,7 @@ const Register = () => {
         <Button
           type="submit"
           primary={true}
-          styles={{ width: '100%' }}
+          styles={{ width: '100%', padding: '0.75rem', borderRadius: '0.25rem' }}
           text="Register"
           disabled={false}
         />

@@ -19,7 +19,7 @@ const appReducer = (state: any, action: any) => {
       },
       board: {
         ...state.board,
-        board: null,
+        board: [],
       },
     };
   }
