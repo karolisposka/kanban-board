@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAppSelector } from '../../hooks';
 import * as S from './Header.styles';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useLocation, useParams, NavigateFunction } from 'react-router-dom';
 
 type props = {
   show: boolean;
@@ -13,11 +13,11 @@ const Header = ({ show, handleClick, board }: props) => {
   const { theme } = useAppSelector((state) => state.user);
   const [display, setDisplay] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(true);
-  const { page } = useParams();
-  const navigate = useNavigate();
+  const { page } = useParams<string>();
+  const navigate: NavigateFunction = useNavigate();
   const location = useLocation();
 
-  //navigates to main page
+  //navigates to main page on icon click
 
   const handleLogoClick = () => {
     if (location.pathname !== '/') {
@@ -26,6 +26,8 @@ const Header = ({ show, handleClick, board }: props) => {
       return;
     }
   };
+
+  //to disable add task button if board selector is empty
 
   useEffect(() => {
     if (board) {

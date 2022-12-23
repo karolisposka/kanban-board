@@ -35,6 +35,7 @@ export const boardSlice = createSlice({
         state.status = 'pending';
       })
       .addCase(fetchBoards.fulfilled, (state, action: any) => {
+        console.log(action.payload);
         if (action.payload.msg) {
           return {
             ...state,

@@ -1,4 +1,4 @@
-import Styled from 'styled-components';
+import Styled, { keyframes } from 'styled-components';
 import Link from '../link/Link';
 import { ReactComponent as Icon } from '../../assets/icon-hide-sidebar.svg';
 import ThemeToggler from '../themeToggler/ThemeToggler';
@@ -13,11 +13,10 @@ export const SideBarContainer = Styled.div<props>`
     font-family:${(props) => props.theme.fonts.name};
     background:${(props) => props.theme.background.secondary};
     border-right:1px solid ${(props) => props.theme.border.primary};
-    width:33%;
-    min-width:192px;
-    max-width:255px;
-    display:${(props) => (props.show === 'true' ? 'block' : 'none')};  
+    transition:0.2s ease-in-out;
     overflow:hidden;
+    width:${(props) => (props.show === 'true' ? '33%' : '0%')}; 
+    max-width:255px;
     @media(max-width:576px){
         display:none
     }
@@ -39,7 +38,8 @@ export const Span = Styled.span`
 
 export const LinksList = Styled.ul`
    padding:0;
-   animation-delay: 2s;
+   animation-delay: 0.3s;
+
 `;
 
 export const StyledLink = Styled(Link)`

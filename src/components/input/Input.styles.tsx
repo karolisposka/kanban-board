@@ -34,6 +34,7 @@ export const InputContainer = Styled.div<inputProps>`
     align-items:center;
     justify-content:space-between;
     border-radius:0.125rem;
+    transition: 0.2s ease-in-out;
     border:${(props) => (props.error ? '1px solid #EA5555' : '1px solid #3e3F4E')};
 `;
 

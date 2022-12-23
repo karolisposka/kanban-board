@@ -29,6 +29,7 @@ export const Textarea = Styled.textarea<props>`
     font-size:12px;
     outline:none;
     padding:0.25rem;
+    transition: 0.2s ease-in-out;
     border:${(props) => (props.error ? '1px solid #EA5555' : '1px solid #3e3F4E')};
     margin-top:0.25rem;
     ::placeholder{
