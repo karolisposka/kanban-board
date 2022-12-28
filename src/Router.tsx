@@ -17,7 +17,6 @@ import Board from './pages/Board';
 
 function Router() {
   const { token, theme } = useAppSelector((state) => state.user);
-  console.log(token);
   return (
     <div className="App">
       <BrowserRouter>

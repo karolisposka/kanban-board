@@ -22,6 +22,15 @@ export const SideBarContainer = Styled.div<props>`
     }
 `;
 
+const opacity = keyframes`
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+`;
+
 export const Boards = Styled.h1`
     color:${(props) => props.theme.fonts.colors.secondary};
     font-size:12px;
@@ -29,6 +38,7 @@ export const Boards = Styled.h1`
     font-weight:700;
     text-transform:uppercase;
     padding: 0 16px;
+  
 `;
 
 export const Span = Styled.span`
@@ -38,7 +48,11 @@ export const Span = Styled.span`
 
 export const LinksList = Styled.ul`
    padding:0;
+   opacity: 0;
    animation-delay: 0.3s;
+    animation: ${opacity} 0.3s ease-in;
+    animation-fill-mode: forwards;
+   
 
 `;
 

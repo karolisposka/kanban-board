@@ -15,7 +15,25 @@ type props = {
   }[];
 };
 
-const initialValues = {
+type init = {
+  name: string;
+  id: string;
+  description: string;
+  status: string;
+  subtasks: {
+    id: string;
+    title: string;
+    isCompleted: boolean;
+  }[];
+};
+
+type sub = {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+};
+
+const initialValues: init = {
   name: '',
   id: uuid(),
   description: '',
@@ -56,13 +74,12 @@ const NewTaskForm = ({ handleSubmit, options }: props) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values: any) => {
+      onSubmit={(values: init) => {
         handleSubmit(values);
       }}
     >
       {(formik) => {
         const { errors, values, touched } = formik;
-        console.log(errors);
         return (
           <Form handleSubmit={formik.handleSubmit}>
             <S.Title>Add New Task</S.Title>
@@ -117,7 +134,7 @@ const NewTaskForm = ({ handleSubmit, options }: props) => {
                       disabled={false}
                       text="+ Add new subtask"
                       handleClick={() => {
-                        const newSubtask = createNewSubtask();
+                        const newSubtask: sub = createNewSubtask();
                         push(newSubtask);
                       }}
                     />
