@@ -1,4 +1,5 @@
 import Styled from 'styled-components';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 export const Container = Styled.div`
     position: absolute;
@@ -19,4 +20,14 @@ export const Section = Styled.section`
     max-width:480px;
     background:${(props) => props.theme.background.taskBg};
     border-radius:0.5rem;
+`;
+
+export const CloseBtn = Styled(AiOutlineCloseCircle)`
+    font-size:36px;
+    color:#ffffff;
+    position:absolute;
+    cursor:pointer;
+    top:1rem;
+    right:1rem;
+    z-index:99;
 `;

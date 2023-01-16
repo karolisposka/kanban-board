@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import uuid from 'react-uuid';
 import { addTask } from '../store/slices/board';
 import { fetchBoards } from '../store/slices/board';
 import { useParams } from 'react-router-dom';
