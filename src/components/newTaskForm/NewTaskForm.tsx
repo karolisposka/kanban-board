@@ -74,8 +74,9 @@ const NewTaskForm = ({ handleSubmit, options }: props) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values: init) => {
+      onSubmit={(values: init, { resetForm }) => {
         handleSubmit(values);
+        resetForm();
       }}
     >
       {(formik) => {
