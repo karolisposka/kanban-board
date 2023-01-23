@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import boardsReducer from './slices/board';
 import UserReducer from './slices/users';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage/session';
 
 const rootReducer = combineReducers({
   board: boardsReducer,
