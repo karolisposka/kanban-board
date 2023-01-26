@@ -46,7 +46,8 @@ const Register = () => {
     initialValues: initialValues,
     validationSchema: registerValidation,
     onSubmit: () => {
-      dispatch(userRegister(formik.values));
+      const values = formik.values;
+      dispatch(userRegister(values));
       if (status === 'idle') {
         formik.resetForm();
         navigate('/login');
