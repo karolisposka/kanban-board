@@ -83,20 +83,32 @@ export const userSlice = createSlice({
   extraReducers: (builder: any) => {
     builder
       .addCase(userLogin.pending, (state: any) => {
-        state.status = 'pending';
+        return {
+          ...state,
+          status: 'pending',
+        };
       })
       .addCase(userLogin.fulfilled, (state: any, action: any) => {
         state.status = 'idle';
         if (action.payload.token) {
-          state.token = action.payload.token;
-          state.message = action.payload.msg;
+          return {
+            ...state,
+            token: action.payload.token,
+            message: action.payload.msg,
+          };
         } else {
-          state.message = action.payload;
+          return {
+            ...state,
+            message: action.payload,
+          };
         }
       })
       .addCase(userLogin.rejected, (state: any, action: any) => {
-        state.message = action.payload;
-        state.status = 'idle';
+        return {
+          ...state,
+          message: action.payload,
+          status: 'idle',
+        };
       })
       .addCase(userRegister.pending, (state: any) => {
         return {

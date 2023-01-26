@@ -35,7 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/empty');
+      navigate('/');
     }
   });
 

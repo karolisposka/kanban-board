@@ -49,6 +49,7 @@ const Register = () => {
       dispatch(userRegister(formik.values));
       if (status === 'idle') {
         formik.resetForm();
+        navigate('/login');
       } else {
         return;
       }
