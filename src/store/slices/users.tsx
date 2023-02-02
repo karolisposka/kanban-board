@@ -89,7 +89,6 @@ export const userSlice = createSlice({
         };
       })
       .addCase(userLogin.fulfilled, (state: any, action: any) => {
-        state.status = 'idle';
         if (action.payload.token) {
           return {
             ...state,
